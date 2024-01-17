@@ -1,4 +1,4 @@
-version: '3'
+version: '3.3'
 services:
   mysql:
     image: mysql:latest
@@ -32,8 +32,6 @@ services:
       - redis
     ports:
       - "5067:5067"
-    networks:
-      - netfit
     environment:
       APP_PORT: "5067"
       DB_HOST: mysql
@@ -44,7 +42,10 @@ services:
       REDIS_HOST: redis
       REDIS_PORT: "6379"
       REDIS_PASSWORD: your_redis_password
+      REDIS_USERNAME: default
       OPEN_AI_TOKEN: ${OPEN_AI_TOKEN}
+    networks:
+      - netfit
 
 networks:
   netfit:
