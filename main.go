@@ -5,7 +5,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"time"
 
 	"github.com/fadilahonespot/chatbot/repository/cached"
 	"github.com/fadilahonespot/chatbot/repository/http/chatgbt"
@@ -21,8 +20,6 @@ import (
 func main() {
 	// Setup Env
 	godotenv.Load()
-
-	time.Sleep(30 * time.Second)
 
 	// Setup Logger
 	logger.NewLogger()
