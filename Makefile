@@ -19,16 +19,16 @@ delete:
 	@echo "=================================================================================="
 	@echo "Stop Service"
 	@echo "=================================================================================="
-	docker stop chatbot-golang-app-1  || true
-	docker stop chatbot-mysql-1  || true
-	docker stop chatbot-redis-1 || true
+	docker stop chatbot-app  || true
+	docker stop mysql-app  || true
+	docker stop redis-app || true
 	
 	@echo "=================================================================================="
 	@echo "Delete Container"
 	@echo "=================================================================================="
-	docker rm chatbot-golang-app-1  || true
-	docker rm chatbot-mysql-1  || true
-	docker rm chatbot-redis-1 || true
+	docker rm chatbot-app  || true
+	docker rm mysql-app  || true
+	docker rm redis-app || true
 	
 	@echo "=================================================================================="
 	@echo "Delete Images"
