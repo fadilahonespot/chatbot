@@ -1,6 +1,7 @@
 version: '3.3'
 services:
   mysql:
+    container_name: mysql-app
     image: mysql:latest
     restart: always
     environment:
@@ -12,6 +13,7 @@ services:
       - "3306:3306"
 
   redis:
+    container_name: redis-app
     image: redis:latest
     restart: always
     environment:
@@ -20,6 +22,7 @@ services:
       - "6379:6379"
 
   golang-app:
+    container_name: chat-bot-app
     build:
       context: .
       dockerfile: Dockerfile
@@ -30,7 +33,7 @@ services:
       - "5067:5067"
     environment:
       APP_PORT: "5067"
-      DB_HOST: mysql
+      DB_HOST: mysql-app
       DB_PORT: "3306"
       DB_USERNAME: your_user
       DB_PASSWORD: your_password
