@@ -29,6 +29,9 @@ services:
     depends_on:
       - mysql
       - redis
+    links:
+      - mysql
+      - redis
     ports:
       - "5067:5067"
     environment:
