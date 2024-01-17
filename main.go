@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/fadilahonespot/chatbot/repository/cached"
 	"github.com/fadilahonespot/chatbot/repository/http/chatgbt"
@@ -20,6 +21,8 @@ import (
 func main() {
 	// Setup Env
 	godotenv.Load()
+
+	time.Sleep(5 * time.Second)
 
 	// Setup Logger
 	logger.NewLogger()
@@ -48,7 +51,7 @@ func main() {
 		SetUserHandler(userHandler).
 		SetChatHandler(chatHandler).
 		Validate()
-	
+
 	route.SetupRouter()
 
 	port := os.Getenv("APP_PORT")
