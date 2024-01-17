@@ -9,24 +9,30 @@ test-coverage:
 	@echo "=================================================================================="
 	go tool cover -func coverage.cov
 
-delete-service:
+build:
+	@echo "=================================================================================="
+	@echo "Build Service"
+	@echo "=================================================================================="
+	docker-compose up
+
+delete:
 	@echo "=================================================================================="
 	@echo "Stop Service"
 	@echo "=================================================================================="
-	docker stop chatbot_mysql_1 || true
-	docker stop chatbot_redis_1 || true
-	docker stop chatbot_golang-app_1 || true
+	docker stop chatbot-golang-app-1 || true
+	docker stop chatbot-mysql-1 || true
+	docker stop chatbot-redis-1 || true
 	
 	@echo "=================================================================================="
 	@echo "Delete Container"
 	@echo "=================================================================================="
-	docker rm chatbot_mysql_1 || true
-	docker rm chatbot_redis_1 || true
-	docker rm chatbot_golang-app_1 || true
+	docker rm chatbot-golang-app-1 || true
+	docker rm chatbot-mysql-1 || true
+	docker rm chatbot-redis-1 || true
 	
 	@echo "=================================================================================="
 	@echo "Delete Images"
 	@echo "=================================================================================="
-	docker rmi chatbot_golang-app || true
+	docker rmi chatbot-golang-app || true
 	docker rmi redis || true
 	docker rmi mysql || true

@@ -10,8 +10,6 @@ services:
       MYSQL_PASSWORD: your_password
     ports:
       - "3306:3306"
-    networks:
-      - netfit
 
   redis:
     image: redis:latest
@@ -20,8 +18,6 @@ services:
       REDIS_PASSWORD: your_redis_password
     ports:
       - "6379:6379"
-    networks:
-      - netfit
 
   golang-app:
     build:
@@ -44,9 +40,3 @@ services:
       REDIS_PASSWORD: your_redis_password
       REDIS_USERNAME: default
       OPEN_AI_TOKEN: ${OPEN_AI_TOKEN}
-    networks:
-      - netfit
-
-networks:
-  netfit:
-    driver: "bridge"
