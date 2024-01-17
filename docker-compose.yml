@@ -10,6 +10,8 @@ services:
       MYSQL_PASSWORD: your_password
     ports:
       - "3306:3306"
+    networks:
+      - netfit
 
   redis:
     image: redis:latest
@@ -18,6 +20,8 @@ services:
       REDIS_PASSWORD: your_redis_password
     ports:
       - "6379:6379"
+    networks:
+      - netfit
 
   golang-app:
     build:
@@ -28,6 +32,8 @@ services:
       - redis
     ports:
       - "5067:5067"
+    networks:
+      - netfit
     environment:
       APP_PORT: "5067"
       DB_HOST: mysql
@@ -39,3 +45,7 @@ services:
       REDIS_PORT: "6379"
       REDIS_PASSWORD: your_redis_password
       OPEN_AI_TOKEN: ${OPEN_AI_TOKEN}
+
+networks:
+  netfit:
+    driver: "bridge"
