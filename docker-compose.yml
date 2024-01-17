@@ -4,18 +4,18 @@ services:
     image: mysql:latest
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${SB_USERNAME}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: your_database
+      MYSQL_USER: your_user
+      MYSQL_PASSWORD: your_password
     ports:
       - "3306:3306"
 
   redis:
     image: redis:latest
     restart: always
-    environment:
-      REDIS_PASSWORD: ${REDIS_URL}
+    ports:
+      - "6379:6379"
 
   golang-app:
     build:
@@ -29,8 +29,9 @@ services:
     environment:
       DB_HOST: mysql
       DB_PORT: "3306"
-      DB_USERNAME: ${DB_USERNAME}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_NAME: ${DB_NAME}
-      REDIS_URL: ${REDIS_URL}
+      DB_USERNAME: your_user
+      DB_PASSWORD: your_password
+      DB_NAME: your_database
+      REDIS_HOST: redis
+      REDIS_PORT: "6379"
       OPEN_AI_TOKEN: ${OPEN_AI_TOKEN}

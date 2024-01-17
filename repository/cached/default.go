@@ -16,20 +16,19 @@ type cache struct {
 func NewWrapper() CacheWrapper {
 	fmt.Println("Connect Redis Client.....")
 
-	addr, err := redis.ParseURL(os.Getenv("REDIS_URL"))
-	if err != nil {
-		panic(err)
-	}
+	client := redis.NewClient(&redis.Options{
+		Addr:     fmt.Sprintf("%v:%v", os.Getenv("REDIS_HOST"), os.Getenv("REDIS_PORT")),     // Redis server address
+		Password: os.Getenv("REDIS_PASSWORD"), // No password for your local setup
+		Username: os.Getenv("REDIS_USERNAME"), // Username
+	})
 
-	client := redis.NewClient(addr)
-	err = client.Ping(context.Background()).Err()
+	err := client.Ping(context.Background()).Err()
 	if err != nil {
 		panic(err)
 	}
 
 	return &cache{client: client}
 }
-
 func (w *cache) Set(ctx context.Context, key, value string, duration time.Duration) (err error) {
 	fmt.Printf("[CACHED SET] key: %v, value: %v \n", key, value)
 	err = w.client.Set(ctx, key, value, duration).Err()
