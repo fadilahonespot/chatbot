@@ -10,8 +10,6 @@ import (
 type Pagination struct {
 	Page   int
 	Limit  int
-	Title  string
-	Rating float64
 }
 
 func Paginate(page, length int) func(db *gorm.DB) *gorm.DB {
