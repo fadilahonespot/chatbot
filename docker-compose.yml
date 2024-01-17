@@ -22,7 +22,7 @@ services:
       - "6379:6379"
 
   golang-app:
-    container_name: chat-bot-app
+    container_name: chatbot-app
     build:
       context: .
       dockerfile: Dockerfile
@@ -38,7 +38,7 @@ services:
       DB_USERNAME: your_user
       DB_PASSWORD: your_password
       DB_NAME: your_database
-      REDIS_HOST: redis
+      REDIS_HOST: redis-app
       REDIS_PORT: "6379"
       REDIS_PASSWORD: your_redis_password
       REDIS_USERNAME: default
