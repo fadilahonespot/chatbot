@@ -27,10 +27,8 @@ func InitDB() *gorm.DB {
 		DB = DB.Debug()
 	}
 
-	if os.Getenv("DB_MIGRATION") == "true" {
-		DB.AutoMigrate(&entity.User{})
-		DB.AutoMigrate(&entity.Chat{})
-	}
+	DB.AutoMigrate(&entity.User{})
+	DB.AutoMigrate(&entity.Chat{})
 
 	return DB
 }

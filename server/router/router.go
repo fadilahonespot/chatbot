@@ -42,6 +42,5 @@ func (r *Router) SetupRouter() {
 	http.HandleFunc("/register", middleware.SetLoggerMiddleware(r.userHandler.Register))
 	http.HandleFunc("/login", middleware.SetLoggerMiddleware(r.userHandler.Login))
 
-	http.Handle("/chat", middleware.SetLoggerMiddleware(middleware.JwtMiddleware(r.chatHandler.ChatQuestion)))
-	http.Handle("/chat/history", middleware.SetLoggerMiddleware(middleware.JwtMiddleware(r.chatHandler.GetChatHistory)))
+	http.Handle("/chat", middleware.SetLoggerMiddleware(middleware.JwtMiddleware(r.chatHandler.Chat)))
 }
