@@ -1,19 +1,17 @@
 version: '3.3'
 services:
   mysql:
-    container_name: mysql-app
     image: mysql:latest
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: your_database
-      MYSQL_USER: your_user
-      MYSQL_PASSWORD: your_password
+      MYSQL_DATABASE: chatbot_db
+      MYSQL_USER: fadilah
+      MYSQL_PASSWORD: typ123000
     ports:
       - "3306:3306"
 
   redis:
-    container_name: redis-app
     image: redis:latest
     restart: always
     environment:
@@ -22,26 +20,22 @@ services:
       - "6379:6379"
 
   golang-app:
-    container_name: chatbot-app
     build:
       context: .
       dockerfile: Dockerfile
     depends_on:
       - mysql
       - redis
-    links:
-      - mysql
-      - redis
     ports:
       - "5067:5067"
     environment:
       APP_PORT: "5067"
-      DB_HOST: mysql-app
+      DB_HOST: mysql
       DB_PORT: "3306"
-      DB_USERNAME: your_user
-      DB_PASSWORD: your_password
-      DB_NAME: your_database
-      REDIS_HOST: redis-app
+      DB_USERNAME: fadilah
+      DB_PASSWORD: typ123000
+      DB_NAME: chatbot_db
+      REDIS_HOST: redis
       REDIS_PORT: "6379"
       REDIS_PASSWORD: your_redis_password
       REDIS_USERNAME: default

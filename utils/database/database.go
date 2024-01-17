@@ -3,6 +3,7 @@ package database
 import (
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/fadilahonespot/chatbot/entity"
 	"gorm.io/driver/mysql"
@@ -18,7 +19,17 @@ func InitDB() *gorm.DB {
 		os.Getenv("DB_NAME"),
 	)
 
-	DB, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	var DB *gorm.DB
+	var err error
+	for i := 0; i < 7; i++ {
+		DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
+		if err == nil {
+			break
+		}
+		
+		time.Sleep(time.Duration(10) * time.Second)
+	}
+
 	if err != nil {
 		panic(err)
 	}
