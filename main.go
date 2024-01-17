@@ -22,7 +22,7 @@ func main() {
 	// Setup Env
 	godotenv.Load()
 
-	time.Sleep(5 * time.Second)
+	time.Sleep(10 * time.Second)
 
 	// Setup Logger
 	logger.NewLogger()
