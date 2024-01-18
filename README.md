@@ -137,7 +137,7 @@ To run the API, you need to set up the environment variables. Create a file name
             "code": 200,
             "message": "Success",
             "data": {
-                "answer": "Berikut ini adalah langkah-langkah umum untuk mencuci mobil: ... (detailed answer)"
+                "answer": "Untuk memulai koding, ada beberapa tools yang biasanya digunakan oleh para pengembang. Berikut beberapa tools yang biasa digunakan:\n\n1. Text Editor atau Integrated Development Environment (IDE): seperti Visual Studio Code, Sublime Text, Atom, atau IntelliJ IDEA. Tools ini digunakan untuk menulis dan mengedit kode.\n\n2. Bahasa Pemrograman: Pilihlah bahasa pemrograman yang ingin kamu pelajari atau gunakan. Contohnya, Python, JavaScript, Java, atau PHP.\n\n3. Command Line Interface (CLI): Untuk menjalankan perintah atau skrip dari baris perintah, seperti Command Prompt di Windows atau Terminal di macOS dan Linux.\n\n4. Version Control System (VCS): Berguna untuk mengatur versi dan kolaborasi dengan tim pengembang lain. Git adalah salah satu VCS yang populer.\n\n5. Browser: Untuk menguji dan mengembangkan aplikasi web, kamu memerlukan browser seperti Google Chrome atau Mozilla Firefox.\n\n6. Dokumentasi: Selalu periksa dokumentasi resmi bahasa pemrograman atau framework yang kamu gunakan, seperti dokumentasi Python atau dokumentasi ReactJS.\n\n7. Stack Overflow dan Forum Diskusi: Bergabung dalam komunitas pengembang dan bergabunglah dalam forum diskusi seperti Stack Overflow untuk mencari jawaban atas pertanyaan atau masalah yang kamu hadapi.\n\nItulah beberapa tools dasar yang sering digunakan dalam proses pengembangan aplikasi. Semoga membantu!"
             }
         }
         ```
@@ -159,7 +159,7 @@ To run the API, you need to set up the environment variables. Create a file name
                 {
                     "id": 2,
                     "name": "Bot",
-                    "message": "Untuk koding, ada beberapa tools yang umumnya digunakan oleh para pengembang. ... (detailed answer)"
+                    "message": "Untuk memulai koding, ada beberapa tools yang biasanya digunakan oleh para pengembang. Berikut beberapa tools yang biasa digunakan:\n\n1. Text Editor atau Integrated Development Environment (IDE): seperti Visual Studio Code, Sublime Text, Atom, atau IntelliJ IDEA. Tools ini digunakan untuk menulis dan mengedit kode.\n\n2. Bahasa Pemrograman: Pilihlah bahasa pemrograman yang ingin kamu pelajari atau gunakan. Contohnya, Python, JavaScript, Java, atau PHP.\n\n3. Command Line Interface (CLI): Untuk menjalankan perintah atau skrip dari baris perintah, seperti Command Prompt di Windows atau Terminal di macOS dan Linux.\n\n4. Version Control System (VCS): Berguna untuk mengatur versi dan kolaborasi dengan tim pengembang lain. Git adalah salah satu VCS yang populer.\n\n5. Browser: Untuk menguji dan mengembangkan aplikasi web, kamu memerlukan browser seperti Google Chrome atau Mozilla Firefox.\n\n6. Dokumentasi: Selalu periksa dokumentasi resmi bahasa pemrograman atau framework yang kamu gunakan, seperti dokumentasi Python atau dokumentasi ReactJS.\n\n7. Stack Overflow dan Forum Diskusi: Bergabung dalam komunitas pengembang dan bergabunglah dalam forum diskusi seperti Stack Overflow untuk mencari jawaban atas pertanyaan atau masalah yang kamu hadapi.\n\nItulah beberapa tools dasar yang sering digunakan dalam proses pengembangan aplikasi. Semoga membantu!"
                 },
                 {
                     "id": 1,
