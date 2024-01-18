@@ -37,3 +37,11 @@ delete:
 	docker rmi golang:latest || true
 	docker rmi redis:latest || true
 	docker rmi mysql:latest || true
+clean:
+	@echo "=================================================================================="
+	@echo "Clean Data And Cache In Docker"
+	@echo "=================================================================================="
+	docker container prune
+	docker image prune -a
+	docker system prune --all --force --volumes
+	sudo find /var/lib/docker/containers/ -type f -name "*.log" -delete

@@ -23,6 +23,10 @@ services:
 
   golang-app:
     container_name: chatbot-app
+    command: 
+      - "bash"
+      - "-c"
+      - "go test -v -coverprofile coverage.cov ./... && go tool cover -func coverage.cov"
     build:
       context: .
       dockerfile: Dockerfile
@@ -43,7 +47,3 @@ services:
       REDIS_PASSWORD: your_redis_password
       REDIS_USERNAME: default
       OPEN_AI_TOKEN: ${OPEN_AI_TOKEN}
-    command: 
-      - "bash"
-      - "-c"
-      - "go test -v -coverprofile coverage.cov ./... && go tool cover -func coverage.cov"
