@@ -64,110 +64,116 @@ To run the API, you need to set up the environment variables. Create a file name
 ## Endpoints
 
 1. Register
-    Request
-    - Method: POST
-    - URL: localhost:5067/register
-    - Body:
-    ```json
-    {
-        "name": "fadilah",
-        "email": "fadilah65@gmail.com",
-        "password": "123456"
-    }
-    ```
+    - Request
+        - Method: POST
+        - URL: localhost:5067/register
+        - Body:
+        ```json
+        {
+            "name": "fadilah",
+            "email": "fadilah65@gmail.com",
+            "password": "123456"
+        }
+        ```
 
-    Response
-    - Status: OK (200)
-    - Body:
-    ```json
-    {
-        "code": 200,
-        "message": "Success",
-        "data": null
-    }
-    ```
+    - Response
+        - Status: OK (200)
+        - Body:
+        ```json
+        {
+            "code": 200,
+            "message": "Success",
+            "data": null
+        }
+        ```
 
 2. Login
-    Request
-    - Method: POST
-    - URL: localhost:5067/login
-    - Body:
-    ```json
-    {
-        "email": "fadilah65@gmail.com",
-        "password": "123456"
-    }
-
-    ```
-
-    Response
-    - Status: OK (200)
-    - Body:
-    ```json
-    {
-        "code": 200,
-        "message": "Success",
-        "data": {
-            "id": 5,
-            "name": "fadilah",
-            "email": "fadilah620@gmail.com",
-            "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDU1NDIxMzksInVzZXJJZCI6NX0.wl24af17wQy6e8HDX4qW4fRO6SIsQozPWMIdbwFtfqM"
+    - Request
+        - Method: POST
+        - URL: localhost:5067/login
+        - Body:
+        ```json
+        {
+            "email": "fadilah65@gmail.com",
+            "password": "123456"
         }
-    }
-    ```
+
+        ```
+
+    - Response
+        - Status: OK (200)
+        - Body:
+        ```json
+        {
+            "code": 200,
+            "message": "Success",
+            "data": {
+                "id": 5,
+                "name": "fadilah",
+                "email": "fadilah620@gmail.com",
+                "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDU1NDIxMzksInVzZXJJZCI6NX0.wl24af17wQy6e8HDX4qW4fRO6SIsQozPWMIdbwFtfqM"
+            }
+        }
+        ```
 
 3. Chat Question
-    Request
-    - Method: POST
-    - URL: localhost:5067/chat
-    - Headers:
-        Authorization: Bearer {{access-token}}
-    - Body:
-    ```json
-    {
-        "question": "tools yang di butuhkan untuk koding?"
-    }
-    ```
-
-    Response
-    - Status: OK (200)
-    - Body:
-    ```json
-    {
-        "code": 200,
-        "message": "Success",
-        "data": {
-            "answer": "Berikut ini adalah langkah-langkah umum untuk mencuci mobil: ... (detailed answer)"
+    - Request
+        - Method: POST
+        - URL: localhost:5067/chat
+        - Headers:
+            - Authorization: Bearer {{access-token}}
+        - Body:
+        ```json
+        {
+            "question": "tools yang di butuhkan untuk koding?"
         }
-    }
-    ```
+        ```
+
+    - Response
+        - Status: OK (200)
+        - Body:
+        ```json
+        {
+            "code": 200,
+            "message": "Success",
+            "data": {
+                "answer": "Berikut ini adalah langkah-langkah umum untuk mencuci mobil: ... (detailed answer)"
+            }
+        }
+        ```
 
 4. Chat History
-    Request
-    - Method: GET
-    - URL: localhost:5067/chat
-    - Headers:
-        Authorization: Bearer {{access-token}}
-    Response
-    - Status: OK (200)
-    - Body:
-    ```json
-    {
-        "code": 200,
-        "message": "Success",
-        "data": [
-            {
-                "id": 2,
-                "name": "Bot",
-                "message": "Untuk koding, ada beberapa tools yang umumnya digunakan oleh para pengembang. ... (detailed answer)"
-            },
-            {
-                "id": 1,
-                "name": "fadilah",
-                "message": "tools yang di butuhkan untuk koding?"
-            }
-        ]
-    }
+    - Request
+        - Method: GET
+        - URL: localhost:5067/chat
+        - Headers:
+            - Authorization: Bearer {{access-token}}
+    - Response
+        - Status: OK (200)
+        - Body:
+        ```json
+        {
+            "code": 200,
+            "message": "Success",
+            "data": [
+                {
+                    "id": 2,
+                    "name": "Bot",
+                    "message": "Untuk koding, ada beberapa tools yang umumnya digunakan oleh para pengembang. ... (detailed answer)"
+                },
+                {
+                    "id": 1,
+                    "name": "fadilah",
+                    "message": "tools yang di butuhkan untuk koding?"
+                }
+            ]
+        }
+        ```
+    
+    ## Unit Testing
+    To run unit tests, use the following command:
+    ```
+    make test
     ```
 
     ## Sample Logs
