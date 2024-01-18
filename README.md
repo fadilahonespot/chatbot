@@ -51,12 +51,12 @@ To run the API, you need to set up the environment variables. Create a file name
     OPEN_AI_TOKEN=your_openai_token
     ```
     After setting up the environment variables, use the following command to build and run your application in Docker:
-    use make command
+    - use make command
     ```
     make build
     ```
 
-    or use docker command
+    - use docker command
     ```
     docker-compose up
     ```
