@@ -6,9 +6,9 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: chatbot_db
-      MYSQL_USER: fadilah
-      MYSQL_PASSWORD: typ123000
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     ports:
       - "3306:3306"
 
@@ -17,16 +17,12 @@ services:
     image: redis:latest
     restart: always
     environment:
-      REDIS_PASSWORD: your_redis_password
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
     ports:
       - "6379:6379"
 
   golang-app:
     container_name: chatbot-app
-    command: 
-      - "bash"
-      - "-c"
-      - "go test -v -coverprofile coverage.cov ./... && go tool cover -func coverage.cov"
     build:
       context: .
       dockerfile: Dockerfile
@@ -39,11 +35,11 @@ services:
       APP_PORT: "5067"
       DB_HOST: mysql
       DB_PORT: "3306"
-      DB_USERNAME: fadilah
-      DB_PASSWORD: typ123000
-      DB_NAME: chatbot_db
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
       REDIS_HOST: redis
       REDIS_PORT: "6379"
-      REDIS_PASSWORD: your_redis_password
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
       REDIS_USERNAME: default
       OPEN_AI_TOKEN: ${OPEN_AI_TOKEN}
