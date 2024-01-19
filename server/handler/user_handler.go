@@ -21,42 +21,62 @@ func NewUserHandler(userUsecase usecase.UserUsecase) *UserHandler {
 	}
 }
 
+// Register godoc
+// @Summary Register a new user
+// @Description Register a new user
+// @Tags Users
+// @Accept  json
+// @Produce  json
+// @Param request body dto.RegisterRequest true "Register Request"
+// @Success 200 {object} dto.RegisterResponse
+// @Failure 400,500 {object} errors.HTTPError
+// @Router /register [post]
 func (h *UserHandler) Register(w http.ResponseWriter, r *http.Request) {
-	var req dto.RegisterRequest
-	ctx := r.Context()
-	err := request.GetRequestFromContext(ctx, &req)
-	if err != nil {
-		logger.Error(ctx, "failed get request", err.Error())
-		err = errors.SetError(http.StatusInternalServerError, http.StatusText(http.StatusInternalServerError))
-		response.ResponseError(w, err)
-		return
-	}
+    var req dto.RegisterRequest
+    ctx := r.Context()
+    err := request.GetRequestFromContext(ctx, &req)
+    if err != nil {
+        logger.Error(ctx, "failed get request", err.Error())
+        err = errors.SetError(http.StatusInternalServerError, http.StatusText(http.StatusInternalServerError))
+        response.ResponseError(w, err)
+        return
+    }
 
-	err = h.userUsecase.Register(ctx, req)
-	if err != nil {
-		response.ResponseError(w, err)
-		return
-	}
+    err = h.userUsecase.Register(ctx, req)
+    if err != nil {
+        response.ResponseError(w, err)
+        return
+    }
 
-	response.ResponseSuccess(w, nil)
+    response.ResponseSuccess(w, nil)
 }
 
+// Login godoc
+// @Summary Login a user
+// @Description Login a user
+// @Tags Users
+// @Accept  json
+// @Produce  json
+// @Param request body dto.LoginRequest true "Login Request"
+// @Success 200 {object} dto.LoginResponse
+// @Failure 400,500 {object} errors.HTTPError
+// @Router /login [post]
 func (h *UserHandler) Login(w http.ResponseWriter, r *http.Request) {
-	var req dto.LoginRequest
-	ctx := r.Context()
-	err := request.GetRequestFromContext(ctx, &req)
-	if err != nil {
-		logger.Error(ctx, "failed get request", err.Error())
-		err = errors.SetError(http.StatusInternalServerError, http.StatusText(http.StatusInternalServerError))
-		response.ResponseError(w, err)
-		return
-	}
+    var req dto.LoginRequest
+    ctx := r.Context()
+    err := request.GetRequestFromContext(ctx, &req)
+    if err != nil {
+        logger.Error(ctx, "failed get request", err.Error())
+        err = errors.SetError(http.StatusInternalServerError, http.StatusText(http.StatusInternalServerError))
+        response.ResponseError(w, err)
+        return
+    }
 
-	resp, err := h.userUsecase.Login(ctx, req)
-	if err != nil {
-		response.ResponseError(w, err)
-		return
-	}
+    resp, err := h.userUsecase.Login(ctx, req)
+    if err != nil {
+        response.ResponseError(w, err)
+        return
+    }
 
-	response.ResponseSuccess(w, resp)
+    response.ResponseSuccess(w, resp)
 }

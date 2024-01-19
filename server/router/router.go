@@ -38,9 +38,13 @@ func (r *Router) Validate() *Router {
 	return r
 }
 
+// SetupRouter sets up the router
 func (r *Router) SetupRouter() {
-	http.HandleFunc("/register", middleware.SetLoggerMiddleware(r.userHandler.Register))
-	http.HandleFunc("/login", middleware.SetLoggerMiddleware(r.userHandler.Login))
+    // Register route for registering a new user
+    http.HandleFunc("/register", middleware.SetLoggerMiddleware(r.userHandler.Register))
+    // Register route for logging in a user
+    http.HandleFunc("/login", middleware.SetLoggerMiddleware(r.userHandler.Login))
 
-	http.Handle("/chat", middleware.SetLoggerMiddleware(middleware.JwtMiddleware(r.chatHandler.Chat)))
+    // Register route for handling chat requests
+    http.Handle("/chat", middleware.SetLoggerMiddleware(middleware.JwtMiddleware(r.chatHandler.Chat)))
 }
