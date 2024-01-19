@@ -22,8 +22,8 @@ func (r *Router) SetUserHandler(handler *handler.UserHandler) *Router {
 }
 
 func (r *Router) SetChatHandler(handler *handler.ChatHandler) *Router {
-    r.chatHandler = handler
-    return r
+	r.chatHandler = handler
+	return r
 }
 
 func (r *Router) Validate() *Router {
@@ -32,19 +32,19 @@ func (r *Router) Validate() *Router {
 	}
 
 	if r.chatHandler == nil {
-        panic("chat handler is nil")
-    }
+		panic("chat handler is nil")
+	}
 
 	return r
 }
 
 // SetupRouter sets up the router
 func (r *Router) SetupRouter() {
-    // Register route for registering a new user
-    http.HandleFunc("/register", middleware.SetLoggerMiddleware(r.userHandler.Register))
-    // Register route for logging in a user
-    http.HandleFunc("/login", middleware.SetLoggerMiddleware(r.userHandler.Login))
+	// Register route for registering a new user
+	http.HandleFunc("/register", middleware.SetLoggerMiddleware(r.userHandler.Register))
+	// Register route for logging in a user
+	http.HandleFunc("/login", middleware.SetLoggerMiddleware(r.userHandler.Login))
 
-    // Register route for handling chat requests
-    http.Handle("/chat", middleware.SetLoggerMiddleware(middleware.JwtMiddleware(r.chatHandler.Chat)))
+	// Register route for handling chat requests
+	http.Handle("/chat", middleware.SetLoggerMiddleware(middleware.JwtMiddleware(r.chatHandler.Chat)))
 }

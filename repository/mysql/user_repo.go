@@ -18,7 +18,7 @@ type defultUserRepo struct {
 }
 
 func NewUserRepository(db *gorm.DB) UserRepository {
-    return &defultUserRepo{db}
+	return &defultUserRepo{db}
 }
 
 func (s *defultUserRepo) Create(ctx context.Context, req *entity.User) (err error) {

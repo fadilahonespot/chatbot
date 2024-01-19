@@ -8,8 +8,8 @@ import (
 )
 
 type Pagination struct {
-	Page   int
-	Limit  int
+	Page  int
+	Limit int
 }
 
 func Paginate(page, length int) func(db *gorm.DB) *gorm.DB {
@@ -22,8 +22,8 @@ func Paginate(page, length int) func(db *gorm.DB) *gorm.DB {
 
 func GetParams(queryParam url.Values) Pagination {
 	params := Pagination{
-		Page:   cast.ToInt(queryParam.Get("page")),
-		Limit:  cast.ToInt(queryParam.Get("limit")),
+		Page:  cast.ToInt(queryParam.Get("page")),
+		Limit: cast.ToInt(queryParam.Get("limit")),
 	}
 
 	if params.Page == 0 {

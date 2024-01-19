@@ -26,7 +26,7 @@ func InitDB() *gorm.DB {
 		if err == nil {
 			break
 		}
-		
+
 		time.Sleep(time.Duration(10) * time.Second)
 	}
 
